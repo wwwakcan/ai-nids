@@ -1,0 +1,69 @@
+# ─── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+ENV/
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ─── Jupyter ──────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ─── Models (large binary files) ──────────────────────────────────────────────
+models/*.pkl
+models/*.h5
+models/*.keras
+models/*.joblib
+models/*.bin
+!models/.gitkeep
+
+# ─── Datasets (large files — download separately) ─────────────────────────────
+data/KDDTrain+.txt
+data/KDDTest+.txt
+data/KDDTrain+_20Percent.txt
+data/cicids/
+data/*.csv
+data/*.pcap
+data/*.parquet
+!data/sample_flows.csv
+!data/download_datasets.py
+
+# ─── Environment & Secrets ────────────────────────────────────────────────────
+.env
+.env.*
+*.secret
+config/secrets.yml
+
+# ─── Docker volumes ───────────────────────────────────────────────────────────
+siem/elasticsearch-data/
+siem/kibana-data/
+siem/logstash-data/
+
+# ─── Logs & outputs ───────────────────────────────────────────────────────────
+logs/
+*.log
+*.log.*
+outputs/
+reports/
+
+# ─── IDE & OS ─────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ─── Coverage & CI ────────────────────────────────────────────────────────────
+.coverage
+htmlcov/
+.pytest_cache/
+.mypy_cache/

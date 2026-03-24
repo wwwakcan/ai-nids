@@ -1,0 +1,48 @@
+name: AI-NIDS CRITICAL Alert
+type: any
+index: ai-nids-alerts-*
+
+# Trigger on any CRITICAL severity event
+filter:
+  - term:
+      severity: "CRITICAL"
+
+# Alert within 5 seconds of detection
+realert:
+  minutes: 0
+
+alert:
+  - slack
+  - email
+
+# ── Slack ─────────────────────────────────────────────────────────────────────
+slack_webhook_url: "https://hooks.slack.com/YOUR_WEBHOOK_URL_HERE"
+slack_channel_override: "#soc-alerts"
+slack_username_override: "AI-NIDS"
+slack_emoji_override: ":rotating_light:"
+slack_msg_color: "danger"
+slack_title: "CRITICAL Intrusion Detected"
+slack_text: |
+  *Label:* {label}
+  *Source IP:* {src_ip}
+  *AE Score:* {ae_score}
+  *Time:* {@timestamp}
+
+# ── Email ─────────────────────────────────────────────────────────────────────
+email:
+  - "soc-team@yourcompany.com"
+smtp_host: "smtp.yourcompany.com"
+smtp_port: 587
+smtp_ssl: false
+from_addr: "ai-nids@yourcompany.com"
+email_subject: "[CRITICAL] AI-NIDS Intrusion Alert - {label}"
+
+alert_text: |
+  CRITICAL intrusion detected by AI-NIDS.
+
+  Attack Type : {label}
+  Source IP   : {src_ip}
+  AE Score    : {ae_score}
+  Timestamp   : {@timestamp}
+
+  Recommended Action: Block source IP and escalate to Tier-2 analyst.

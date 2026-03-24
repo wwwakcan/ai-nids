@@ -1,0 +1,30 @@
+name: AI-NIDS HIGH Alert
+type: frequency
+index: ai-nids-alerts-*
+
+# Trigger when 3+ HIGH events occur within 1 minute
+num_events: 3
+timeframe:
+  minutes: 1
+
+filter:
+  - term:
+      severity: "HIGH"
+
+realert:
+  minutes: 5
+
+alert:
+  - slack
+
+slack_webhook_url: "https://hooks.slack.com/YOUR_WEBHOOK_URL_HERE"
+slack_channel_override: "#soc-alerts"
+slack_username_override: "AI-NIDS"
+slack_emoji_override: ":warning:"
+slack_msg_color: "warning"
+slack_title: "HIGH Severity Intrusion Burst"
+slack_text: |
+  *{num_hits} HIGH severity events in 1 minute*
+  *Attack Type:* {label}
+  *Source IP:* {src_ip}
+  *Time:* {@timestamp}
