@@ -344,4 +344,4 @@ ai-nids/
 
 ## License
 
-MIT © 2025 — [wwwakcan](https://github.com/wwwakcan)
+MIT © 2026 — [wwwakcan](https://github.com/wwwakcan)
